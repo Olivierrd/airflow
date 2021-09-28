@@ -215,7 +215,7 @@ class TriggerRuleDep(BaseTIDep):
                 )
         elif trigger_rule == TR.NONE_FAILED_MIN_ONE_SUCCESS:
             num_failures = upstream - successes - skipped
-            if num_failures > 0:
+            if num_failures > 0 and successes > 0:
                 yield self._failing_status(
                     reason="Task's trigger rule '{}' requires all upstream "
                     "tasks to have succeeded or been skipped, but found {} non-success(es). "
